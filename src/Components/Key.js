@@ -1,11 +1,9 @@
 import React from "react";
 
 const Key = (props) => {
-
     return (
-        <button>{props.simbol}</button>
+        <button value={props.symbol}>{props.symbol}</button>
     )
-
 }
 
 export default Key
