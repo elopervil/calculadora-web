@@ -1,12 +1,8 @@
 import React from "react";
 
-const ResultScreen = (props) => {
+const ResultScreen = ({ value }) => {
     return (
-        <div>
-            <form>
-                <input type="text" value={props.result}/>
-            </form>
-        </div>
+      <input readonly type="text" value={value}/>
     );
 }
 

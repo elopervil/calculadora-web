@@ -1,8 +1,8 @@
 import React from "react";
 
-const Key = (props) => {
+const Key = ({onKeyClick, symbol}) => {
     return (
-        <button value={props.symbol}>{props.symbol}</button>
+        <button onClick={() => onKeyClick(symbol)}>{symbol}</button>
     )
 }
 
