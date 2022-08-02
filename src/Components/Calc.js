@@ -46,6 +46,7 @@ const Calc = (props) => {
                         break;
                 }
                 setStatus(RESULT);
+
             } else if (status === OPERATION) {
                 switch (operation) {
                     case '+' :
