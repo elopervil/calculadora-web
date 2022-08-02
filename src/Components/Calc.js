@@ -46,15 +46,31 @@ const Calc = (props) => {
                         break;
                 }
                 setStatus(RESULT);
-            }
-
+            } else if (status === OPERATION) {
+                switch (operation) {
+                    case '+' :
+                        setValue(firstOperator + firstOperator);
+                        break;
+                    case '-' :
+                        setValue(firstOperator - firstOperator);
+                        break;
+                    case '/' :
+                        setValue(firstOperator / firstOperator);
+                        break;
+                    case 'x' :
+                        setValue(firstOperator * firstOperator);
+                        break;
+                    default:
+                        break;
+                }
+                setFirstOperator(value);
+            } 
         } else {
             setFirstOperator(value);
             setOperation (val);
             setStatus(OPERATION);
         }
-
-    };
+    }
 
 
     return (
