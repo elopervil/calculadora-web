@@ -11,19 +11,22 @@ const Calc = (props) => {
     const [value, setValue] = useState(0);
     const [firstOperator, setFirstOperator] = useState (0);
     const [operation, setOperation] = useState('');
-    const [status, setStatus] = useState (INPUT_FIRST_NUMBER)
+    const [status, setStatus] = useState (INPUT_FIRST_NUMBER);
+    const [saveOperator, setSaveOperator] = useState(0);
 
     const onInput = (val) => {
         
         if (typeof val === 'number'){
             if (status === INPUT_FIRST_NUMBER || status === INPUT_SECOND_NUMBER) {
-                setValue((value * 10) + val)
+                setValue((value * 10) + val);
+                setSaveOperator(val);
             } else if (status === OPERATION) {
                 setValue(val);
                 setStatus(INPUT_SECOND_NUMBER);
             }
         } else if (val === 'DEL') {
             setValue(0);
+            setSaveOperator(0);
             setStatus(INPUT_FIRST_NUMBER);
         } else if (val === '.') {
 
@@ -46,25 +49,25 @@ const Calc = (props) => {
                         break;
                 }
                 setStatus(RESULT);
-
+        
             } else if (status === OPERATION) {
                 switch (operation) {
                     case '+' :
-                        setValue(firstOperator + firstOperator);
+                        setValue(value + saveOperator);
                         break;
                     case '-' :
-                        setValue(firstOperator - firstOperator);
+                        setValue(value - saveOperator);
                         break;
                     case '/' :
-                        setValue(firstOperator / firstOperator);
+                        setValue(value / saveOperator);
                         break;
                     case 'x' :
-                        setValue(firstOperator * firstOperator);
+                        setValue(value * saveOperator);
                         break;
                     default:
                         break;
                 }
-                setFirstOperator(value);
+                
             } 
         } else {
             setFirstOperator(value);
